@@ -1,0 +1,42 @@
+# Regla de ejemplo para dispositivos USB de entrada
+#SUBSYSTEM=="input", KERNEL=="mouse*", SYMLINK+="input/mouse%n"
+#SUBSYSTEM=="input", KERNEL=="event*", SYMLINK+="input/event%n"
+#SUBSYSTEM=="block", KERNEL=="sd[a-z]", SYMLINK+="disk/by-id/%k"
+#SUBSYSTEM=="block", KERNEL=="nvme[0-9]n[0-9]", SYMLINK+="disk/by-id/%k"
+
+
+#ACTION!="add", GOTO="default_end"
+
+SUBSYSTEM=="input", KERNEL=="event*",  GROUP="staff", MODE="0660"
+
+# Permitir acceso a terminales TTY
+KERNEL=="tty*", GROUP="staff", MODE="0660" 
+# Permitir acceso a dispositivos seriales
+KERNEL=="ttyS*", GROUP="staff", MODE="0660"
+
+# Permitir acceso a dispositivos de sonido
+SUBSYSTEM=="sound", GROUP="staff", MODE="0660"
+
+# Permitir acceso a tarjetas de entrada
+KERNEL=="input*", SUBSYSTEM=="input", GROUP="dialout", MODE="0660"
+
+# Permitir acceso a dispositivos de video
+KERNEL=="card*", GROUP="staff", MODE="0660"
+#KERNEL=="video*", GROUP="staff", MODE="0660"
+#KERNEL=="fb*", GROUP="staff", MODE="0660"
+
+# Permitir acceso a discos duros y dispositivos de almacenamiento
+#KERNEL=="sd[a-z]", GROUP="staff", MODE="0660"
+#KERNEL=="sr[0-9]*", GROUP="staff", MODE="0660"
+
+# Permitir acceso a dispositivos USB
+KERNEL=="usbdev*", GROUP="staff", MODE="0660"
+KERNEL=="bus/usb/*", GROUP="staff", MODE="0660"
+
+
+
+# Permitir acceso a dispositivos de red
+#KERNEL=="net", GROUP="staff", MODE="0660"
+
+
+LABEL="default_end"

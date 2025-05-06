@@ -5,7 +5,7 @@ set +h
 umask 022
 
 PWD=$(pwd)
-CDIR=$(realpath $PWD/..) 
+[ -z "$CDIR" ] && CDIR=$(realpath $PWD/..) 
 SAY "CLUB en $CDIR"
 
 # Las guias son proyectos

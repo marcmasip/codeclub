@@ -714,8 +714,8 @@ make BUILD_OPT=1                      \
 "unzip")
 
 	O && BD &&
-
-	 make -f unix/Makefile generic &&\
+	CFLAGS="-Wno-error=implicit-function-declaration -Wno-error=implicit-int" \
+	 make -f unix/Makefile generic CC="gcc -std=gnu89" &&\
 	make prefix=/usr MANDIR=/usr/share/man/man1 -f unix/Makefile install
 ;;
 
@@ -888,6 +888,7 @@ install -vm755 target/release/cargo-{capi,cbuild,cinstall,ctest} /usr/bin/ && DI
             --with-systemdsystemunitdir=no       \
             --with-system-socket=/run/dbus/system_bus_socket ;;
 
+"iptables") $r --disable-nftables --enable-libiq ;;
 
 "alsa-lib") $r && O alsa-ucm-conf && tar -C /usr/share/alsa --strip-components=1 -xf $LDIR/alsa-ucm-conf-1.2.12.tar.bz2 ;;
 "alsa-plugins") $r --sysconfdir=/etc ;;
@@ -914,9 +915,9 @@ install -vm755 target/release/cargo-{capi,cbuild,cinstall,ctest} /usr/bin/ && DI
 		MIA="DESTDIR=$PWD/Dest"
 		MI &&
 		
-		install -vm755 Dest/lib/libfuse.so.2.9.7 /lib                  &&
+		install -vm755 Dest/lib/libfuse.so.2.9.9 /lib                  &&
 		install -vm755 Dest/lib/libulockmgr.so.1.0.1 /lib                 &&
-		ln -sfv ../../lib/libfuse.so.2.9.7 /usr/lib/libfuse.so         &&
+		ln -sfv ../../lib/libfuse.so.2.9.9 /usr/lib/libfuse.so         &&
 		ln -sfv ../../lib/libulockmgr.so.1.0.1 /usr/lib/libulockmgr.so &&
 
 		install -vm644  Dest/lib/pkgconfig/fuse.pc /usr/lib/pkgconfig  && 

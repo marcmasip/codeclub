@@ -1,13 +1,14 @@
 # Base components setup
 
-CDIR=/root/club
+CDIR=$(realpath ../)
+LDIR=/root/club/library
 TDIR=/tmp/club
 GDIR=/tmp/club/log
 RDIR=/var/club/log
 VDIR=/var/club/log
 ODIR=/
 GUIDE="64"
-. ./guides.sh
+. ../util/guides.sh
 
 export LC_ALL=POSIX \
 CONFIG_SITE=$ODIR/usr/share/config.site \
@@ -19,11 +20,10 @@ OTAR32=i686-club-linux-gnu
 
 if [ "$1" == "info" ]; then 
 	SAY "ODIR=$ODIR"
-	SAY "OTAR=$OTAR"
-	SAY "OTAR32=$OTAR32"
-	SAY "PATH=$PATH"
+	SAY "OTAR=$OTAR OTAR32=$OTAR32"
 	SAY "VDIR=$VDIR"
 	SAY "GDIR=$GDIR"
+	SAY "PATH=$PATH"
 	
 	cd $VDIR
 	
@@ -50,7 +50,6 @@ fi
 if [ "$2" == "all" ]; then
 
 	if [ "$1" == "tools2" ]; then 
-
 		R welcome
 		R gettext
 		R bison
@@ -59,12 +58,8 @@ if [ "$2" == "all" ]; then
 		R texinfo
 		R util-linux
 		R util-linux32
-		
-		
 	fi
-	
-	
-	
+
 
 	if [ "$1" == "base" ]; then
 
@@ -157,8 +152,7 @@ if [ "$2" == "all" ]; then
 		
 		R nsrp
 		R nss
-		
-		
+
 		R libarchive
 		R sqlite
 		R libpsl
@@ -187,8 +181,7 @@ if [ "$2" == "all" ]; then
 		R graphite2
 		R harfbuzz
 		R fribidi
-		
-		
+
 		R syslinux 
 		
 	fi
@@ -355,9 +348,7 @@ if [ "$2" == "all" ]; then
 		R xclock 
 		
 		#R xdg-utils
-	
-	
-	
+
 		# libs
 		R gtk3
 		
@@ -367,12 +358,10 @@ if [ "$2" == "all" ]; then
 		R jwm 
 		R spacefm
 		R geany 
-
 		
 	fi
 	
 	DO_R
-	
 	
 else
 

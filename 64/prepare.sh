@@ -2,7 +2,7 @@
 BUILDU=marc
 ODIR=$(realpath ../64/sysroot)
 GUIDE="64"
-. ./guides.sh
+. ../util/guides.sh
 OIMG=$(realpath ../64/sysroot.img)
 KIMG=$(realpath ../64/kernel-work)
 VDIR=$GDIR

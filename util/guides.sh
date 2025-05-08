@@ -1,5 +1,5 @@
 
-. ./util.sh
+. $CDIR/util/show.sh
 
 set +h
 umask 022
@@ -8,11 +8,13 @@ PWD=$(pwd)
 [ -z "$CDIR" ] && CDIR=$(realpath $PWD/..) 
 SAY "CLUB en $CDIR"
 
-# Las guias son proyectos
+# Las guias son arquitecturas 
 [ -z "$GUIDE" ] && E "NOGUIDE pff" && exit 1
+
+# El capitulo grupos de componentes
 CHAPTER="$1"
 
-# Los items son componentes del proyecto
+# Los items son los componentes/proyectos
 ITEM="$2" 
 SRC="$ITEM" 
 
@@ -445,7 +447,7 @@ DO_R() {
 GUIDE_ITEM_LOAD(){
 	
 	[ ! -z "$1" ] && ITEM="$1"
-	p="./guide-${GUIDE}-$CHAPTER.sh"
+	p="$CDIR/${GUIDE}/items-$CHAPTER.sh"
 	[ ! -f "$p" ] && E "No chapter $p" && exit
 	SAY "Cargando capítulo $CHAPTER ..." "📜"
 	CNT_CHECK

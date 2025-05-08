@@ -1,6 +1,9 @@
-# 🐧 Linux Club Guides
+# 🐧 Linux Code Club Guides
 
-Welcome to **Linux Club**, an experimental (*and slightly chaotic*) solution for building your very own Linux system — based on the legendary LFS/BLFS guides, but with less scrolling and more scripting.
+** NOTE: This is an incomplete experiment please do not expect results **
+
+
+Welcome to **Linux Code Club**, an experimental (*and slightly chaotic*) solution for building your very own Linux system — based on the legendary LFS/BLFS guides, but with less scrolling and more scripting.
 
 We’re talking about Bash-powered wizardry, smart macros, compressed procedures, enough DIY spirit to build an operating system from the void, and why not some vive coding.
 

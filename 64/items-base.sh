@@ -904,6 +904,14 @@ install -vm755 target/release/cargo-{capi,cbuild,cinstall,ctest} /usr/bin/ && DI
             -D bluez5=disabled  ;;
 
 
+"p11-kit")
+	$mur --buildtype=release \
+      -D trust_paths=/etc/pki/anchors &&\
+      
+      ln -sfv /usr/libexec/p11-kit/trust-extract-compat \
+        /usr/bin/update-ca-certificates
+;;
+
 "fuse") $mur --buildtype=release ;;
 "fuse2")
 

@@ -341,3 +341,4 @@ adwaita-icon-theme 47.0 tar.xz https://download.gnome.org/sources/adwaita-icon-t
 irssi 1.4.5 tar.gz https://github.com/irssi/irssi/releases/download/1.4.5/irssi-1.4.5.tar.gz
 dropbear 2025.87 tar.bz2 https://matt.ucc.asn.au/dropbear/releases/dropbear-2025.87.tar.bz2
 xdg-utils v1.2.1 tar.gz https://gitlab.freedesktop.org/xdg/xdg-utils/-/archive/v1.2.1/xdg-utils-v1.2.1.tar.gz
+xdottool 3.20211022.1 tar.gz https://github.com/jordansissel/xdotool/releases/download/v3.20211022.1/xdotool-3.20211022.1.tar.gz

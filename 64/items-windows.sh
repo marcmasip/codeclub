@@ -111,6 +111,10 @@ $mur --buildtype=release       \
       
  ;;
 
+"xdottool")
+	O && BD && MO PREFIX=/usr && MI PREFIX=/usr
+;;
+
 "gobject-introspection") $mur --buildtype=release -Dtests=false ;;
 "glib2") SRC="glib" && $mur --buildtype=release -Dintrospection=enabled ;;
 

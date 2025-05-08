@@ -1,4 +1,3 @@
-
 #
 # PRINT BASIC FUNCTIONS
 #
@@ -27,8 +26,14 @@ PCCOLOR() {
     echo -ne "\033[${color_code}m${char}\033[0m"
 }
 
-PSI(){
-  echo $(du -hs $1)
+CONFIRM(){
+	ORANGE='\033[38;5;208m'
+	BOLD='\033[1m'
+	CRS='\033[0m'
+	SAY  "Confirma	${BOLD}$CHAPTER${CRS}/${BOLD}$ITEM${CRS}"  "❔" "Destino:	${BOLD}$ODIR${CRS}"
+	read uok
+	[ "$uok" != "y" ] && echo "Cancelled " && exit 1
+	return 0
 }
 
 
@@ -40,8 +45,6 @@ PSI(){
 
 SHOW_TASK="Empezando ..."
 DEC="$(PCCOLOR '┈')"
-
-
 SW_MOTD(){
 	echo "     "
 	echo $1 > $BDIR/motd.info
@@ -163,9 +166,7 @@ $t│  \e[3m\033[37m$INFO_MOTD \e[5;58H│
 $t╰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╯
 \e[H\e[59C $kpistr \e8"
 
-   now=$(current_time)
-
-    # Calcular diferencia de tiempo
+    now=$(current_time)
     elapsed=$(awk "BEGIN { print $now - $LAST_FRAME_TIME }")
 
     if (( $(awk "BEGIN { print ($elapsed >= $FRAME_DELAY) }") )); then
@@ -251,43 +252,3 @@ ROTA_TEXT=(\
 
 
 
-CONFIRM(){
-	ORANGE='\033[38;5;208m'
-	BOLD='\033[1m'
-	CRS='\033[0m'
-	SAY  "Confirma	${BOLD}$CHAPTER${CRS}/${BOLD}$ITEM${CRS}"  "❔" "Destino:	${BOLD}$ODIR${CRS}"
-	read uok
-	[ "$uok" != "y" ] && echo "Cancelled " && exit 1
-	return 0
-}
-
-
-LOG_DISABLE=""
-
-
-
-sound_playing=0
-
-play_sound() {
-	return 0
-  local SOUND_FILE="util/$1.wav"
-  if [ "$sound_playing" -eq 1 ]; then
-    echo "Un sonido ya está en reproducción. Esperando..."
-  else
-    paplay "$SOUND_FILE" &
-    sound_playing=1
-    wait
-    sound_playing=0
-  fi
-}
-tunefor() {  
-  local SOUND_FILE="util/$1.wav"
-  if [[ -n "$TUNE_LAST" ]]; then
-    if kill -0 "$TUNE_LAST" 2>/dev/null; then
-      kill "$TUNE_LAST"
-    fi
-  fi
-  paplay "$SOUND_FILE" &
-  export TUNE_LAST=$!
-
-}

@@ -40,30 +40,20 @@ SAY "SALIDA en $ODIR"
 [ ! -d "$GDIR" ] && mkdir -p "$GDIR"
 [ ! -d "$VDIR" ] && mkdir -p "$VDIR"
 
+#
+# Configure thingys
+#
 
-OB(){
-	O
-	B "$OB_PFX $1" "$2" "$3"
-	res=$?
-	DI
-	return $res
-}
-
+# Delete item build dir
 DI(){
 	local w="$SRC"
 	[ ! -z "$1" ] && w="$1"
-	
-	
 	local cleaned=""
 	[ -d "$BDIR/$w" ] && rm -rf $BDIR/$w && cleaned=1
 	[ -d "$SDIR/$w" ] && rm -rf $SDIR/$w && cleaned=1
 	[ -z "$cleaned" ] && SAY "Limpiando $w " "🚽"
 	return 0
 }
-
-#
-# Configure thingys
-#
 
 # Change to Build Dir 
 BD(){
@@ -118,29 +108,23 @@ MO(){
 	return $?
 }
 
-# Make Install
+# Make Install MIA for arguments 
 MIA=""
 MI(){
 	SW_TASK "Instalando"
 	SW_MOTD "$(MOTD_INSTALL)"
 	SAY "make $MIA install"
-	make $MIA install && CNT_CHECK
+	make $1 $MIA install && CNT_CHECK
 	return $?
 }
-MD(){
-	MO && SW_TASK "Instalando" &&  make install && CNT_CHECK
-	return $?
-}
+
+
 M(){
 	MO && MI $@
 	return $?
 }
 
 
-
-MN(){
-	ninja && ninja install
-}
 MT(){
 	MO && SW_TASK "Instalando" && make DESTDIR=$ODIR install && CNT_CHECK
 	return $?
@@ -166,17 +150,21 @@ CMN(){
 FDEF(){
 	cp -R $CDIR/util/defaults/$1 $ODIR/$1
 }
+ID(){
+	[ -d "$1" ] && echo $(du -hs $1)
+}
+
 
 MOTD_OK() {
-    if [ -f MOTD_OK.txt ]; then
-        shuf -n 1 MOTD_OK.txt
+    if [ -f $CDIR/util/MOTD_OK.txt ]; then
+        shuf -n 1 $CDIR/util/MOTD_OK.txt
     else
         echo "OK"
     fi
 }
 MOTD_ERR() {
-    if [ -f MOTD_ERR.txt ]; then
-        shuf -n 1 MOTD_ERR.txt
+    if [ -f $CDIR/util/MOTD_ERR.txt ]; then
+        shuf -n 1 $CDIR/util/MOTD_ERR.txt
     else
         echo "No tengo frases de error"
     fi
@@ -204,38 +192,9 @@ MOTD_INSTALL() {
 }
 
 
-
-INFO_KPI_VAL=("1" "2" "3")
-INFO_KPI_NAME=("📂" "📜" "⚒️")
-INFO_KPI_NUM=${#INFO_KPI_VAL[@]}
-
-
-INFO(){
-	echo "Aplicaciones:
-$(ID usr/bin) 
-
-Librerias:
-$(ID usr/include, ID usr/lib; ID usr/lib64) 
-
-Assets:
-$(ID bin; ID sbin) 
-
-Sistema:
-$( ID bin; ID sbin; ID lib; ID lib64 ) 
-
-Herramientas:
-$( ID tools)
-"
-}
-ID(){
-	[ -d "$1" ] && echo $(du -hs $1)
-}
-
 #
-# TARBALL DATABASE
+# Library Manager
 #
-
-
 declare -A PKG_MAP  
 declare -A PKG_MAP_DESC
 load_pkg_data() {
@@ -288,12 +247,11 @@ INF_PKG_DESC(){
 
 
 #
-# TARBALL MANAGER
+# Obtain the goat
 #
 
 O(){
-	
-	
+
 	SW_MOTD "$(MOTD_OBTAIN)"
 	
 	if [ -z "$1" ]; then
@@ -391,7 +349,7 @@ O(){
 
 
 #
-# Request package / feature
+# Request Item:   sirve para listas de items
 # 
 
 R_ARRAY=()
@@ -432,8 +390,6 @@ DO_R_I() {
 
 DO_R() {
 	
-# Resultado: dato1,dato2,dato3
-
 	SAY "Se requieren: $(IFS=, ; echo "${R_ARRAYP[*]}")"
 
 	export INFO_ITEM_T="${#R_ARRAY[@]}"
@@ -442,22 +398,6 @@ DO_R() {
        
 		export INFO_ITEM_C=$((INFO_ITEM_C + 1))
     done
-}
-
-GUIDE_ITEM_LOAD(){
-	
-	[ ! -z "$1" ] && ITEM="$1"
-	p="$CDIR/${GUIDE}/items-$CHAPTER.sh"
-	[ ! -f "$p" ] && E "No chapter $p" && exit
-	SAY "Cargando capítulo $CHAPTER ..." "📜"
-	CNT_CHECK
-	SRC=$ITEM
-	if [[ "$SRC" == *-32 ]]; then
-		SRC="${SRC%*-32}"
-	fi
-    SAY "SRC=$SRC"
-	. $p
-	return $?
 }
 
 GUIDE_ITEM(){
@@ -488,19 +428,33 @@ GUIDE_ITEM(){
 	
 }
 
+GUIDE_ITEM_LOAD(){
+	[ ! -z "$1" ] && ITEM="$1"
+	p="$CDIR/${GUIDE}/items-$CHAPTER.sh"
+	[ ! -f "$p" ] && E "No chapter $p" && exit
+	SAY "Cargando capítulo $CHAPTER ..." "📜"
+	CNT_CHECK
+	SRC=$ITEM
+	if [[ "$SRC" == *-32 ]]; then
+		SRC="${SRC%*-32}"
+	fi
+    SAY "SRC=$SRC"
+	. $p
+	return $?
+}
+
+
+
 
 #
-# VARIABLE CONFIG
+# 
 # 
 
 SAY "code $(PCCOLOR 'c')$(PCCOLOR 'l')$(PCCOLOR 'u')$(PCCOLOR 'b') guides" "📐"
 
-
-
-
-
-
-
+INFO_KPI_VAL=("1" "2" "3")
+INFO_KPI_NAME=("📂" "📜" "⚒️")
+INFO_KPI_NUM=${#INFO_KPI_VAL[@]}
 
 
 [ -z "$SHOW_TITLE" ] && export SHOW_TITLE="$ITEM"
@@ -510,12 +464,8 @@ SH_TITLE="$ITEM"
 SH_DESC=""
 SH_TASK=""
 
-
 CNT_CHECK(){
-
 	INFO_KPI_VAL[0]="$(ID $ODIR/usr)"
-	
-	
 	INFO_KPI_VAL[1]="$(ID $SDIR)"
 	INFO_KPI_VAL[2]="$(ID $BDIR)"
 }

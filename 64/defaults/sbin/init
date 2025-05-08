@@ -30,56 +30,64 @@ mount -t tmpfs tmpfs /tmp
 [ ! -L /dev/stdout ] && ln -s /proc/self/fd/1 /dev/stdout
 [ ! -L /dev/stderr ] && ln -s /proc/self/fd/2 /dev/stderr
 
+dmesg -n 3
+
 DO(){
 	echo "    💾 $1 "
 	$@ > /var/log/init.log 2>&1
 }
 
-export LANG=es_ES.UTF-8
-export LANGUAGE=es_ES:es
-export LC_ALL=es_ES.UTF-8
+APT{
+	echo "
+ $@ "
+}
+IPWAIT{
+	for i in $(seq 1 10); do
+		IP=$(ip addr show dev eth0 | awk '/inet / {print $2}' | cut -d/ -f1)
+		if [ ! -z "$IP" ]; then
+			DO "IP asignada: $IP"
+			break
+		fi
+		sleep 1
+	done
 
-echo "
- 📠 Devices "
-DO udevd & DO udevadm trigger
-
-echo "
- 📣 D-Bus"
-[ ! -d /run/dbus ] && DO mkdir -vp /run/dbus &&
-DO dbus-daemon --config-file=/etc/dbus-1/system.conf &
-export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
-
-echo "
- 🔊 Audio"
-DO alsactl init
-DO pulseaudio --start
-
-echo "
- 📡 Internets"
-DO ifconfig lo 127.0.0.1 up
-DO dhcpcd eth0 &
+	if [ -z "$IP" ]; then
+		DO "No se obtuvo IP en eth0 ?"
+	fi
+}
 
 
 USER="`id -un`"
 export HOME=/home/$USER
-
-# Idioma y codificación
 export LANG=es_ES.UTF-8
 export LANGUAGE=es_ES:es
 export LC_ALL=es_ES.UTF-8
+
+APT "📠 Devices "
+DO udevd & DO udevadm trigger
+
+APT "📣 D-Bus"
+[ ! -d /run/dbus ] && mkdir -vp /run/dbus 
+DO dbus-daemon --config-file=/etc/dbus-1/system.conf &
+
+APT "🔊 Audio"
+DO alsactl init
+
+APT "📡 Internets"
+DO ifconfig lo 127.0.0.1 up
+DO dhcpcd eth0 &
+IPWAIT &
+
 loadkeys es
-
 export PS1='\[\e[48;5;0m\e[38;5;239m\] 🐣 \u@\h \[\e[0m\] 📂 \[\e[38;5;208m\]\w \[\e[0m\] 🚀 '
-
 
 echo "
 "
 
+# el mainloop 
 while true; do
-    # Intenta ejecutar Bash
     exec /usr/bin/bash
-    # Si Bash falla o se cierra, muestra un mensaje y espera 5 segundos
-    echo -e "\e[31m💥 Interfaz terminada... se reintenta en 5 segundos... 💫\e[0m"
+    echo -e "\e[31m💥 Principal terminado... se reintenta en 5 segundos... 💫\e[0m"
     sleep 5
 done
 

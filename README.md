@@ -1,4 +1,4 @@
-🚧 ***This is an incomplete experiment please do not run on real environtments.*** 🚧
+🚧 ***This is an incomplete experiment please do not run it yet.*** 🚧
 
 # 🐧 Linux Code Club Guides
 Welcome to **Linux Code Club**, an experimental (*and slightly chaotic*) solution for building your very own Linux desktop system — based on the legendary LFS/BLFS guides, but with less scrolling and more scripting.
@@ -26,7 +26,7 @@ There are two main entry points into the madness:
 - **guide/install.sh** → Adds software to your creation (the blacksmith).
 
 Other helpful sidekicks:
-- **guide/items-<CHAPTER>.sh** → Spells to build/install individual things.
+- **guide/items-CHAPTER.sh** → Spells to build/install individual things.
 - **util/obtain.txt** → The sacred scroll of source URLs.
 - **util/obtain_desc.txt** → Descriptions, rumors, and whispers about those sources.
 
@@ -34,7 +34,7 @@ Other helpful sidekicks:
 
 ## 🧪 x86_64 Multilib Sequence (a.k.a. “Let’s Make a Linux”)
 
-1. **Create a 10GB disk image** in distributables dir. `$DIR/sysroot.img` (ext4) and mount it like a champion:
+1. **Create a 10GB disk image** in distributables dir. `$DDIR/sysroot.img` (ext4) and mount it like a champion:
 
 ```bash
 cd 64
@@ -42,7 +42,7 @@ cd 64
 ./prepare.sh tools mount-disk
 ./prepare.sh tools create-files
 ```
-Say hello to `ODIR=$DIR/sysroot`, where the magic happens.
+Say hello to `ODIR=$DDIR/sysroot`, where the magic happens.
 
 2. **Summon a toolchain and a minimal system**:
 
@@ -92,7 +92,6 @@ cd /tmp/disk/boot/extlinux
 extlinux -i 
 umount /tmp/disk
 ```
-Note: bc syslinux does not handle ext4 64bit, 'resize2fs -s' can remove it.
 
 # 📚 The Lore Behind the Scripts
 So here’s the deal: this whole thing is a kind of Bash poetry experiment that compresses the mighty LFS/BLFS into something... bearable.

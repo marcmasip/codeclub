@@ -22,11 +22,11 @@ GUIDE=<platform> CHAPTER=<category> ITEM=<thing to build>
 ```
 
 There are two main entry points into the madness:
-- **<guide>/prepare.sh** → Bootstraps a new system (the sorcerer’s apprentice).  
-- **<guide>/install.sh** → Adds software to your creation (the blacksmith).
+- **guide/prepare.sh** → Bootstraps a new system (the sorcerer’s apprentice).  
+- **guide/install.sh** → Adds software to your creation (the blacksmith).
 
 Other helpful sidekicks:
-- **<guide>/items-<CHAPTER>.sh** → Spells to build/install individual things.
+- **guide/items-<CHAPTER>.sh** → Spells to build/install individual things.
 - **util/obtain.txt** → The sacred scroll of source URLs.
 - **util/obtain_desc.txt** → Descriptions, rumors, and whispers about those sources.
 

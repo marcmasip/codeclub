@@ -1,0 +1,6 @@
+64/out/*
+64/tmp/*
+pi/out/*
+pi/tmp/*
+library/
+!library/conf

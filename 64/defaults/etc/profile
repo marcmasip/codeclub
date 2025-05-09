@@ -1,0 +1,45 @@
+USER="`id -un`"
+export HOME=/home/$USER
+
+# Idioma y codificación
+export LANG=es_ES.UTF-8
+export LANGUAGE=es_ES:es
+export LC_ALL=es_ES.UTF-8
+
+# Configuración regional específica
+export LC_CTYPE=es_ES.UTF-8       # Codificación de caracteres
+export LC_NUMERIC=es_ES.UTF-8     # Formato de números (puntos o comas decimales)
+export LC_TIME=es_ES.UTF-8        # Formato de fecha y hora
+export LC_COLLATE=es_ES.UTF-8     # Orden de clasificación
+export LC_MONETARY=es_ES.UTF-8    # Formato de monedas
+export LC_MESSAGES=es_ES.UTF-8    # Mensajes del sistema y aplicaciones
+export LC_PAPER=es_ES.UTF-8       # Tamaño de papel por defecto
+export LC_NAME=es_ES.UTF-8        # Convenciones de nombres
+export LC_ADDRESS=es_ES.UTF-8     # Formato de direcciones
+export LC_TELEPHONE=es_ES.UTF-8   # Convenciones telefónicas
+export LC_MEASUREMENT=es_ES.UTF-8 # Unidades de medida
+export LC_IDENTIFICATION=es_ES.UTF-8 # Información cultural
+
+# Soporte adicional para compatibilidad con UTF-8
+export LC_ALL=es_ES.UTF-8
+export CHARSET=UTF-8
+export LC_TERMINAL=UTF-8
+
+# Opcional: Ajustes de comportamiento del terminal
+export EDITOR=vi               # Editor por defecto
+export VISUAL=vi               # Editor visual por defecto
+export PAGER=less                # Paginador por defecto
+
+export PATH=$PATH:/opt/docker
+
+alias vi=vim
+alias ls='ls -laeh'
+
+export PS1=' \u@\h #️⃣   '
+
+if [ -f ~/.bash_completion ]; then
+    . ~/.bash_completion
+fi
+
+
+echo " 🪪 .profile"

@@ -1,0 +1,96 @@
+#!/bin/bash
+clear
+echo "  
+
+  🥁 Welcome to code-club linux 🐧 noot noot 
+  
+"
+
+
+echo " 📻 System files  " 
+mount -o remount rw /
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
+mount -t devtmpfs devtmpfs /dev
+mkdir -p /dev/pts
+mount -t devpts devpts /dev/pts
+mkdir -p /dev/shm
+mount -t tmpfs tmpfs /dev/shm
+mkdir -p /run
+mount -t tmpfs tmpfs /run
+mount -t tmpfs tmpfs /tmp
+
+[ ! -e /dev/console ] && mknod -m 622 /dev/console c 5 1
+[ ! -e /dev/null ] && mknod -m 666 /dev/null c 1 3
+[ ! -e /dev/zero ] && mknod -m 666 /dev/zero c 1 5
+[ ! -e /dev/tty ] && mknod -m 666 /dev/tty c 5 0
+#ln -s /proc/self/fd /dev/fd
+
+[ ! -L /dev/stdin ] && ln -s /proc/self/fd/0 /dev/stdin
+[ ! -L /dev/stdout ] && ln -s /proc/self/fd/1 /dev/stdout
+[ ! -L /dev/stderr ] && ln -s /proc/self/fd/2 /dev/stderr
+
+dmesg -n 3
+
+DO(){
+	echo "    💾 $1 "
+	$@ > /var/log/init.log 2>&1
+}
+
+APT{
+	echo "
+ $@ "
+}
+IPWAIT{
+	for i in $(seq 1 10); do
+		IP=$(ip addr show dev eth0 | awk '/inet / {print $2}' | cut -d/ -f1)
+		if [ ! -z "$IP" ]; then
+			DO "IP asignada: $IP"
+			break
+		fi
+		sleep 1
+	done
+
+	if [ -z "$IP" ]; then
+		DO "No se obtuvo IP en eth0 ?"
+	fi
+}
+
+
+USER="`id -un`"
+export HOME=/home/$USER
+export LANG=es_ES.UTF-8
+export LANGUAGE=es_ES:es
+export LC_ALL=es_ES.UTF-8
+
+APT "📠 Devices "
+DO udevd & DO udevadm trigger
+
+APT "📣 D-Bus"
+[ ! -d /run/dbus ] && mkdir -vp /run/dbus 
+DO dbus-daemon --config-file=/etc/dbus-1/system.conf &
+
+APT "🔊 Audio"
+DO alsactl init
+
+APT "📡 Internets"
+DO ifconfig lo 127.0.0.1 up
+DO dhcpcd eth0 &
+IPWAIT &
+
+loadkeys es
+export PS1='\[\e[48;5;0m\e[38;5;239m\] 🐣 \u@\h \[\e[0m\] 📂 \[\e[38;5;208m\]\w \[\e[0m\] 🚀 '
+
+echo "
+"
+
+# el mainloop 
+while true; do
+    exec /usr/bin/bash
+    echo -e "\e[31m💥 Principal terminado... se reintenta en 5 segundos... 💫\e[0m"
+    sleep 5
+done
+
+
+
+

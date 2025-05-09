@@ -1,0 +1,190 @@
+glibc       | Librería Estándar     | La madre de todas las librerías: maneja memoria, hilos y señales como si fuera multitarea desde 199x.
+zlib        | Compresión ZIP        | Comprime y descomprime como tus ganas un lunes. Ligera, rápida y omnipresente.
+bzip2       | Compresión BZIP2      | Porque a veces un .zip no es lo suficientemente elegante. Más lento, más fino.
+xz          | Compresión XZ         | Comprime tanto que hace que tus archivos se cuestionen su peso existencial.
+lz4         | Compresión Express    | La Fórmula 1 de la compresión. No pesa, no espera, no perdona.
+zstd        | Compresión Moderna    | Zstandard: como zlib pero con esteroides, café y un posgrado.
+file        | El Adivino de Archivos| "Dime tu firma y te diré qué eres." Lee archivos como si fueran horóscopos binarios.
+readline    | Línea con Estilo      | Hace que tu consola tenga memoria, historia y modales. Bash no sería nada sin ella.
+m4          | El Macro Maestro      | Un lenguaje de macros que vive en la sombra pero construye imperios de código.
+lzip        | Compresión Retro      | Vieja escuela, pero con clase. Si xz es hipster, lzip es abuelo con sombrero.
+ed          | Editor Minimalista    | El editor del apocalipsis. Si sólo tenés 'ed', todo está (casi) perdido.
+bc          | Calculadora Científica| La calculadora que no tiene botones, pero sabe más que vos de matemáticas.
+flex        | El Generador de Lex   | Convierte texto en tokens más rápido que vos podés decir "análisis léxico".
+pkgconf     | El GPS de Paquetes    | Le dice al compilador dónde están las cosas. Básicamente Google Maps para librerías.
+binutils    | Herramientas de Bin   | Compilás un programa y todo funciona... gracias a estas joyas invisibles.
+gmp         | Enteros Gigantes      | Para cuando los enteros normales se quedan cortos. Matemáticas con esteroides.
+mpfr        | Flotantes Precisos    | Decimales con precisión suiza. Perfecto para tus cálculos exigentes.
+mpc         | Cálculo Complejo      | Maneja números complejos como si fueran cosa simple. Porque la vida no es solo real.
+libxcrypt   | Encriptado Ligero     | Protege tus contraseñas con magia negra y algoritmos probados.
+gcc         | El Compilador          | El Big Bang de tu sistema. Convierte C en binarios como quien hace café: todos los días.
+ncurses     | Consola con Estilo     | Le pone colores y movimiento a tu terminal. Básicamente el maquillaje del CLI.
+sed         | Editor en Línea        | Busca, reemplaza y transforma texto sin despeinarse. El ninja del stream.
+autoconf    | Configurador Génico    | Detecta tu sistema y prepara el terreno. Un adivino con autoguión.
+automake    | Creador de Makefiles   | Convierte tus deseos en reglas Make. A veces mágico, a veces confuso.
+psmisc      | Trucos de Procesos     | Te da superpoderes para vigilar, matar y amar procesos.
+gettext     | Traductor Universal    | i18n para programas: le enseña a tu software a hablar en lenguas.
+bison       | Parser Constructor     | Si flex es el lexer, bison es el cerebro. Interpreta gramáticas como si fuera literatura.
+grep        | El Buscador Definitivo | Encuentra cualquier texto, en cualquier parte. Tu lupa digital de confianza.
+gperf       | Hashing a Medida       | Crea tablas hash perfectas, como un chef con OCD y pasión por la eficiencia.
+bash        | Shell de Confianza     | El cuartel general de tus comandos. Sin bash, no hay fiesta en la terminal.
+libtool     | Magia para Librerías   | Hace que tus librerías compartidas viajen ligeras y sin drama.
+inetutils   | Herramientas de Red    | El kit de supervivencia para conectarse, hacer ping, y gritarle al mundo.
+less        | Visor Zen              | Para leer archivos sin que te escupan todo encima. "Less is more", literal.
+perl        | Lenguaje Místico       | Puede hacerlo todo... si lográs entender qué demonios hace tu propio script.
+libexpat    | Lector de XML          | Entiende XML sin juzgarlo. Rápido, silencioso, eficiente.
+openssl     | Seguridad al Cubo      | Cifra, firma, encripta. Si tu sistema no tiene esto, tus datos ya están en peligro.
+certs       | Certificados SSL       | Tus llaves para navegar seguro. HTTPS no existiría sin estos papiros digitales.
+kmod        | Módulos del Kernel     | Carga y descarga módulos del kernel como quien juega al Tetris con drivers.
+libelf      | Elfo Binario           | Lee y manipula archivos ELF. Sí, los binarios también tienen magia.
+libffi      | Llamadas Externas      | Permite a lenguajes hablar con C como si fueran viejos amigos con punteros.
+Python      | Lenguaje Universal     | Desde scripts hasta IA, el todoterreno que hace de todo… y más.
+flit-core   | Instalador Minimal     | Construye paquetes Python con elegancia minimalista. Rápido y sin relleno.
+wheel       | Ruedas de Python       | Empaqueta proyectos como ruedas listas para rodar. El .whl es el .zip con propósito.
+setuptools  | Instalador Tradicional | El abuelo sabio de los instaladores Python. A veces gruñón, pero confiable.
+ninja       | Constructor Rápido     | Compila a la velocidad de un ataque crítico. Silencioso y mortal.
+meson       | El Arquitecto Moderno  | Define proyectos como quien juega con LEGO: limpio, estructurado y sin drama.
+coreutils   | Núcleo de Herramientas | Los básicos del sistema: copiar, mover, borrar... lo esencial para vivir.
+diffutils   | Encuentra Diferencias  | Compara archivos como si le fuera la vida. Lo que cambia, lo marca.
+gawk        | AWK moderno             | Manipula texto con gracia matemática. Como Excel, pero sin celdas ni paciencia.
+findutils   | Buscadores Seriales     | Encuentra archivos perdidos mejor que tu madre buscando el control remoto.
+git         | Control Total            | Guarda tu código, tus errores y tu cordura. Porque todos necesitamos un "ctrl+Z".
+iproute2    | Red a la Carta           | Configura tu red con bisturí. ifconfig está jubilado, este es el nuevo jefe.
+kbd         | Teclado al 100           | Te enseña a hablar teclado. Layouts, mapas, y alguna que otra tilde rebelde.
+libpipeline | Tuberías Inteligentes    | Coordina procesos como un director de orquesta. Todo fluye... si él lo permite.
+eudev       | Maestro de Dispositivos  | Detecta hardware y lo hace funcionar. Como magia negra, pero con C.
+libtirpc    | RPC Moderno              | Conecta servicios como quien llama a su primo por red: con protocolo y cariño.
+make        | Constructor Clásico      | El clásico que todo lo compila. Si tu código no se construye, echale la culpa a make.
+patch       | Cirujano de Código       | Aplica cambios quirúrgicos a tus archivos. Precisión milimétrica incluida.
+tar         | El Archivador             | Junta archivos como un pack de stickers. Viejo pero confiable.
+texinfo     | Manuales con Estilo      | Porque hasta las instrucciones necesitan formato. Lee como pro.
+wget        | Descargador Serial       | Trae archivos de internet como si no hubiera mañana. ¡Hasta en loop!
+util-linux  | Caja de Herramientas     | Monta, desmonta, particiona, cronometra… un Linux sin esto no arranca.
+E2fsprogs   | Doctor de Ext4            | Chequea, repara y mantiene sistemas de archivos como un buen mecánico de discos.
+nasm        | Ensamblador Nítido       | Traduce el lenguaje de las máquinas. Brutal, minimal y sin filtros.
+which       | El Rastreador             | Te dice dónde está el ejecutable. Es como el GPS de tus comandos.
+asciidoc    | Documentación Bonita     | Escribir en texto plano, pero con glam. Markdown con pretensiones.
+syslinux    | Bootloader Ligero        | Arranca tu sistema con estilo minimalista. Ideal para rescates o sistemas flacos.
+check       | Pruebas Unitarias        | Testea tu código para que no explote. El Pepito Grillo del desarrollo.
+intltool    | Traducciones a Granel    | Prepara tu programa para hablar 40 idiomas sin que se le trabe la lengua.
+XML-Parser  | Lector de Jerarquías     | Lee XML como quien resuelve rompecabezas. Todo tiene su lugar... y sus etiquetas.
+htop        | Monitor en Esteroides    | top con esteroides, colores y más actitud. Para mirar procesos con flow.
+gdbm        | Base de Datos Simple     | Guarda pares clave-valor como un diario binario. Básico pero resistente.
+shadow      | Contraseñas Seguras      | Gestiona usuarios y contraseñas como un ninja sombrío. Protege tus secretos.
+pciutils    | Detective de Hardware    | Interroga los dispositivos PCI como un sabueso digital. Lo ve todo.
+hwdata      | Diccionario de Hardware  | Una base de datos que sabe qué es qué. Si tu dispositivo tiene nombre, está acá.
+lsof        | Archivos Abiertos        | Te muestra quién tiene qué abierto. Ideal para resolver "¿por qué no puedo borrar esto?".
+groff       | Tipografía de Terminal   | Formatea texto como si fuera 1985. Pero hey, ¡con clase!
+zip         | Empaquetador              | Comprime tus archivos para mandarlos por mail... o por nostalgia.
+unzip       | Desempacador              | Abre archivos .zip sin hacer preguntas. Lo opuesto a zip, con la misma energía.
+freetype        | Letras con Estilo     | Dibuja tipografías como Da Vinci con un pincel digital. Sin él, tus fuentes lloran en pixeles.
+fontconfig      | Catálogo Tipográfico  | El bibliotecario de las fuentes. Encuentra la Arial entre miles sin despeinarse.
+util-macros     | Macros Sin Misterio   | Pequeños trucos, gran magia. Define lo indefinido para que el resto compile sin drama.
+xorgproto       | Protocolo Ancestral   | El libro de las leyes de X11. Todos lo consultan, nadie lo invita a fiestas.
+libXau          | Guardián Silencioso   | Maneja las llaves del castillo X. Sin él, nadie entra a tu reino gráfico.
+libXdmcp        | Saludos y Presentaciones | Coordina quién habla con quién en el mundo X. La cortesía ante todo.
+xcb-proto       | Lengua Nativa XCB     | Define cómo XCB se comunica. Como enseñar a hablar a tu perro, pero con sockets.
+libxcb          | Minimalismo X         | Conecta con X11 sin cargar con equipaje viejo. Ligero, rápido y directo al grano.
+xtrans          | Traductor Gráfico     | Habla muchos protocolos para que X11 no tenga que aprenderlos todos.
+libX11          | El Gran Orquestador   | El alma de X Window. Todo pasa por aquí... para bien o para bugs.
+libXext         | Poderes Extra         | Añade habilidades especiales a X11. Como un DLC gráfico gratuito.
+libFS           | Fuentes Remotas       | Pide letras por red. Como pedir delivery, pero en tipografías.
+libICE          | Congelador Social     | Maneja sesiones con clase. Que todo siga igual aunque apagues la compu.
+libSM           | Memoria Gráfica       | Guarda el estado de tu sesión X. Porque reabrir todo a mano es cosa del pasado.
+libXScrnSaver   | Anti Pantallazo       | Habla con el protector de pantalla. Porque nadie quiere perder su código a oscuras.
+libXt           | Abuelita X            | Base de muchas apps X. Antiguo, confiable y con olor a nostalgia.
+libXmu          | Amistades Gráficas    | Utilidades para Xt. Básicamente, los amigos que ayudan a cargar los muebles.
+libXpm          | Pixel Art Clásico     | Maneja imágenes en texto. Retro y funcional, como un GIF de los 90.
+libXaw          | Widgets Vintage       | Botones, menús y scrollbars de otra era. ¡Y aún funcionando!
+libXfixes       | Parcheando a X        | Arregla pequeños grandes detalles. Como cinta adhesiva para tu sistema gráfico.
+libXcomposite   | Ilusiones Ópticas     | Permite ventanas transparentes y efectos de humo sin trucos de magia.
+libXrender      | Trazos con Glamour    | Dibuja líneas con estilo. Porque una línea fea no merece ser vista.
+libXcursor      | Cursor Fashionista    | Da estilo a tu puntero. Desde flechitas hasta dragones pixelados.
+libXdamage      | ¿Qué se Rompió?       | Detecta los cambios en pantalla. Útil para no volver a dibujar todo... otra vez.
+libfontenc      | Traducción Tipográfica| Codifica fuentes para que se lean en cualquier planeta.
+libXfont2       | Letras Hardcore       | Maneja tipografías directo desde las tripas. Ideal para X a nivel bajo.
+libXft          | Fuente Suave          | Dibuja texto bonito con antialiasing. Porque los bordes dentados ya pasaron de moda.
+libXi           | Interacción Real      | Captura ratones, teclados y hasta tablets. Todo lo que usas para hablar con X.
+libXinerama     | Pantallas Hermanadas  | Junta múltiples monitores como si fueran uno. Ideal para multitasking extremo.
+libXrandr       | Resolución a la Carta | Cambia la pantalla sin reiniciar. Más fácil que mover muebles reales.
+libXres         | Recursos al Descubierto | Consulta cuánta RAM gráfica gasta cada app. Spoiler: siempre más de la cuenta.
+libXtst         | El Fantasma del Mouse | Simula entradas como un ninja. Ideal para testing sin tocar nada.
+libXv           | Video Vintage         | Muestra videos con ayuda del hardware. Cuando ver películas no requería un i9.
+libXvMC         | Cine Acelerado        | Decodifica video por hardware. Menos CPU, más palomitas.
+libXxf86dga     | Control Total de Pantalla | Permite que tu app tome el control de todo. Como un videojuego de los 90.
+libXxf86vm      | Cambio de Resolución Extremo | Cambia el modo de video al vuelo. Útil para gamers old-school.
+libpciaccess    | Detective de PCI      | Explora tu hardware PCI como un hacker curioso.
+libxkbfile      | Diccionario de Teclas | Lee archivos de teclado como un lingüista digital.
+libxshmfence    | Sincronía Perfecta    | Coordina acceso entre procesos gráficos. Como coreografía en un musical.
+pcre2           | Regex Renacido        | Busca, encuentra y transforma texto con patrones ninja. El regex moderno que no te odia (tanto).
+cairo           | Arte Vectorial        | Dibuja de todo, y bonito. Gráficos limpios sin sacrificar la CPU.
+librsvg         | SVG en Tiempo Real    | Convierte vectores en píxeles. Rápido y con estilo, como un diseñador gráfico con turbo.
+MarkupSafe      | HTML a Prueba de Balas| Evita que tu HTML se rompa o sea hackeado. Sanear es querer.
+Mako            | Plantillas con Motor  | Genera HTML dinámico con elegancia. Tu backend te lo agradecerá.
+libva               | Video con Asistencia | Hace que tu GPU se encargue del video. Tu CPU se lo agradece con menos calor.
+libvdpau            | Reproductor VIP       | Otra ruta para que la GPU haga el trabajo sucio del video. Elegancia acelerada.
+libpng              | PNG sin Penas         | Lee y escribe imágenes como si fueran cartas. Sin comprimir la diversión.
+nettle              | Cripto con Piquete    | Bibliotecario de algoritmos criptográficos. Pequeño, rápido y con aguijón.
+libarchive          | Desempacador Oficial  | Abre .tar, .zip, .7z y más. Como un extractor suizo.
+libuv               | Eventos con Ritmo     | Maneja I/O asíncrono como DJ. Nada se bloquea, todo fluye.
+curl                | Descargas con Rizo    | Habla con internet: HTTP, FTP y hasta SCP. Como un navegador sin gráficos.
+cmake               | Constructor Ninja     | Planea tus builds como un arquitecto con scripts. No siempre se entiende, pero siempre funciona.
+libxml2             | XML Destripado        | Lee XML con bisturí. No le tiene miedo a etiquetas ni a nidos infinitos.
+wayland-protocols   | Diplomacia Moderna    | Define cómo hablar en el reino Wayland. Protocolo ante todo.
+wayland             | X11 en la Jubilación  | Nuevo sistema gráfico que vino a jubilar al viejo X. Ligero, seguro y con menos drama.
+glslang             | El Traductor de Shaders | Convierte shaders de GLSL a SPIR-V. De arte a instrucciones en un clic.
+mesa                | Gráficos Artesanales  | Implementa OpenGL sin depender del fabricante. La GPU libre, al fin.
+libepoxy            | Pegamento GL          | Une OpenGL con tus apps. Funciona en las sombras, como buen soporte técnico.
+pixman              | Pintura Rápida        | Dibuja píxeles como un grafitero digital. Ágil y sin spray.
+xcb-util            | Herramientas XCB      | Añade trucos útiles a XCB. Como una navaja suiza para tu GUI.
+xcb-util-image      | Imágenes a Mano       | Maneja imágenes en XCB sin drama. Bitmaps directos al grano.
+xcb-util-keysyms    | Teclas con Sentido    | Traduce códigos raros en teclas legibles. Porque "0x42" no es "B".
+xcb-util-renderutil | Dibujo Refinado       | Añade fineza al renderizado de XCB. Nada de líneas feas aquí.
+xcb-util-wm         | Ventanas con Personalidad | Ayuda a controlar y decorar ventanas. Para que no todas sean grises.
+xcb-util-cursor     | Cursor Bien Puesto    | Cambia tu puntero sin quebraderos de cabeza. Precisión y estilo.
+libxcvt             | Resoluciones a Medida | Crea modelos de video personalizados. Para cuando 1080p no es suficiente.
+font-util           | Utilidades Tipográficas | Cosas pequeñas pero esenciales para que las fuentes hagan su magia.
+xorg-server         | El Jefe X             | El corazón del sistema X. Sin él, solo verías la negrura del vacío digital.
+mtdev               | Toques Suaves         | Traduce multitouch para que tus dedos sean entendidos.
+libevdev            | Habla con el Hardware | Interpreta eventos del mouse y teclado con precisión quirúrgica.
+libinput            | Input con Estilo      | Control moderno de ratones, touchpads y demás. Todo en un solo paquete.
+xkeyboard-config    | Teclado con Cultura   | Configura tu layout, sea QWERTY o marciano. Multilingüe por naturaleza.
+libxkbcommon        | Teclas Universales    | Traduce pulsaciones para que todos los sistemas las entiendan. Esperanto de teclados.
+xbitmaps            | Arte Prehistórico     | Imágenes en blanco y negro estilo cavernícola. Pero aún útiles.
+xf86-input-evdev    | Entrada Clásica       | Controlador que conecta tu hardware de entrada al mundo gráfico.
+iceauth         | Contraseña Gráfica       | Gestiona accesos de clientes X. Como un portero con listas de invitados.
+mkfontscale     | Fuentes al Escáner       | Genera índices para que X encuentre tus fuentes sin buscar a ciegas.
+sessreg         | Registro de Sesiones     | Le dice a tu sistema quién inició sesión. Como una hoja de asistencia.
+setxkbmap       | Teclado a tu Medida      | Cambia el idioma y distribución del teclado. De QWERTY a Dvorak en segundos.
+smproxy         | Traductor de Sesiones    | Hace que apps viejas entiendan cómo guardar su estado. El embajador del pasado.
+x11perf         | Benchmark Gráfico        | Mide qué tan rápido dibujas píxeles. Porque no todo es FPS.
+xauth           | Permiso por Token        | Controla quién puede conectarse a tu servidor X. Seguridad estilo 90s.
+xcmsdb          | Colores con Ciencia      | Gestiona perfiles de color. Porque “rojo” no siempre es rojo.
+xcursorgen      | Cursornator              | Convierte imágenes en cursores X. Desde la flecha clásica hasta el meme.
+xdpyinfo        | DNI de tu Pantalla       | Muestra datos técnicos del servidor X. Ideal para impresionar a nerds.
+xdriinfo        | DRIdiag                  | Muestra qué tan bien hablas con tu GPU. Si no hay DRI, no hay gloria.
+xev             | Detector de Eventos      | Muestra lo que pasa cuando tocas teclas o mueves el mouse. Ideal para debugging.
+xgamma          | Brillo sin Botón         | Ajusta el gamma de la pantalla. Porque no todos los monitores tienen menú.
+xhost           | Lista Blanca Gráfica     | Controla qué máquinas pueden usar tu X. Para paranoicos con estilo.
+xinput          | Domador de Periféricos   | Configura ratones, teclados y más. Tu centro de mando personal.
+xkbcomp         | Compilador de Teclados   | Convierte layouts en binarios XKB. El GCC de las teclas.
+xkbevd          | Teclado con Oído         | Reacciona a eventos del teclado. Ideal para scripts con oído fino.
+xkbutils        | Herramientas de XKB      | Extras para jugar con el sistema de teclas. Si lo puedes mapear, lo puedes cambiar.
+xkill           | Cierra con Clic          | Mata ventanas al instante. El click de la muerte.
+xlsatoms        | Diccionario X11          | Muestra los "átomos" de X. Palabras mágicas que todo cliente entiende.
+xlsclients      | Quién Está en Pantalla   | Lista las apps conectadas al servidor X. Como el “ps” de las ventanas.
+xmessage        | Diálogo Exprés           | Muestra mensajes simples en ventanas. Ideal para scripts que quieren hablar.
+xmodmap         | Teclado a la Carta       | Remapea teclas al vuelo. Porque tu Caps Lock puede ser útil... algún día.
+xpr             | X a Papel                | Convierte ventanas en PostScript. Para cuando quieres imprimir lo que ves.
+xprop           | Radiografía de Ventanas  | Muestra los secretos internos de una ventana. Nada se esconde.
+xrandr          | Resoluciones Dinámicas   | Ajusta la pantalla sin reiniciar. Tus monitores, tus reglas.
+xrdb            | Preferencias X en Cache  | Gestiona la base de datos de recursos X. Donde los colores y fuentes viven.
+xrefresh        | Parpadeo Terapéutico     | Fuerza un repintado de pantalla. Como darle F5 a tu monitor.
+xset            | Configura X al Vuelo     | Cambia timbres, tiempos y más. Control total desde terminal.
+xsetroot        | Fondo Básico             | Cambia el fondo del root window. Útil si amas el minimalismo puro.
+xvinfo          | Info de Video Acelerado  | Muestra soporte de video overlay. Para saber si tu GPU coopera.
+xwd             | Screenshot a la Antigua  | Captura pantallas en formato XWD. Retro, pero confiable.
+xwininfo        | Sherlock de Ventanas     | Te dice todo sobre una ventana. Tamaño, posición y hasta lo que no pidió.
+xwud            | El Reproductor XWD       | Muestra capturas tomadas con `xwd`. El "preview" de otra época.
+xclock          | Reloj Retro              | Muestra la hora... ¡en una ventana! Inútil pero estéticamente nostálgico.
+

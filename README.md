@@ -9,6 +9,10 @@ Think of it as **LFS with cheat codes**.
 Think of it as your personal Linux dojo.  
 Think of it as... *The Code Club*™.
 
+<img align="cener"  src="https://azestudio.net/asset/codeclub_lvl2_l.gif">
+
+
+
 
 
 # 🚀 Getting Started

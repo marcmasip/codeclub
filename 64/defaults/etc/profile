@@ -30,15 +30,10 @@ export EDITOR=vi               # Editor por defecto
 export VISUAL=vi               # Editor visual por defecto
 export PAGER=less                # Paginador por defecto
 
-# Asegurar aplicaciones modernas
 export PATH=$PATH:/opt/docker
-
-export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
 
 alias vi=vim
 alias ls='ls -laeh'
-
-export PS1='\e[38;5;239m\] \u@\h \[\e[0m\] \] #️⃣   '
 
 export PS1=' \u@\h #️⃣   '
 

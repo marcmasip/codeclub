@@ -6,6 +6,8 @@ TDIR=/tmp/club
 GDIR=/tmp/club/log
 RDIR=/var/club/log
 VDIR=/var/club/log
+OTAR=x86_64-club-linux-gnu
+OTAR32=i686-club-linux-gnu
 ODIR=/
 GUIDE="64"
 . ../util/guides.sh
@@ -13,9 +15,6 @@ GUIDE="64"
 export LC_ALL=POSIX \
 CONFIG_SITE=$ODIR/usr/share/config.site \
 JOBS=6 \
-
-OTAR=x86_64-club-linux-gnu
-OTAR32=i686-club-linux-gnu
 
 
 if [ "$1" == "info" ]; then 

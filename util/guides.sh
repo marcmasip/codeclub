@@ -202,9 +202,18 @@ load_pkg_data() {
     [ ! -z "$id" ] && PKG_MAP["$id"]="$ver|$ext|$url|$xfd"
   done < "$CDIR/util/obtain.txt"
   
-  while read -r id title desc; do
-    [ ! -z "$id" ] && PKG_MAP_DESC["$id"]="$title|$desc"
-  done < "$CDIR/util/obtain_desc.txt"
+ while IFS='|' read -r id title desc; do
+ id="${id#"${id%%[![:space:]]*}"}"
+  id="${id%"${id##*[![:space:]]}"}"
+
+  title="${title#"${title%%[![:space:]]*}"}"
+  title="${title%"${title##*[![:space:]]}"}"
+
+  desc="${desc#"${desc%%[![:space:]]*}"}"
+  desc="${desc%"${desc##*[![:space:]]}"}"
+
+  [ -n "$id" ] && PKG_MAP_DESC["$id"]="$title|$desc"
+done < "$CDIR/util/obtain_desc.txt"
 }
 
 load_pkg_data

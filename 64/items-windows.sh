@@ -252,6 +252,7 @@ rm -vf /usr/lib/libx265.a
             --enable-nonfree     \
             --enable-shared      \
             --disable-debug      \
+            --enable-libpulse \
             --enable-libaom      \
             --enable-libass      \
             --enable-libfdk-aac  \

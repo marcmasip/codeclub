@@ -52,6 +52,7 @@ libtool 2.4.7 tar.gz https://mirrors.ibiblio.org/gnu/libtool/libtool-2.4.7.tar.g
 less 661 tar.gz https://ftp.gnu.org/gnu/less/less-661.tar.gz
 automake 1.17
 autoconf 2.72
+unrar 7.1.6 tar.gz https://www.rarlab.com/rar/unrarsrc-7.1.6.tar.gz
 sshd 9.9p1 tar.gz https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-9.9p1.tar.gz openssh-9.9p1
 vim 9.1.0660 tar.gz https://github.com/vim/vim/archive/v9.1.0660/vim-9.1.0660.tar.gz
 libpsl 0.21.5 tar.gz https://github.com/rockdaboot/libpsl/releases/download/0.21.5/libpsl-0.21.5.tar.gz

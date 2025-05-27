@@ -243,7 +243,10 @@ EOF
             --disable-servers &&
    echo "nameserver 8.8.8.8" > /etc/resolv.conf
 ;;
+"unrar")
+	O && BD && MO -f makefile && install -v -m755 unrar /usr/bin
 
+;;
 "pkgconf") 
 	$r --disable-static &&\
        ln -sfv /usr/bin/pkgconf /usr/bin/pkg-config

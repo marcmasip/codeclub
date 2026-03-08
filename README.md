@@ -9,7 +9,7 @@ Favoring **understanding over abstraction** and **intent over excess**. 🕊️
 This repository acts as a **technical notebook** documenting the build structure, scripts, and experiments behind the system.
 
 
-## ⚗ ️Desktop
+## ⚗ ️[Desktop](desktop/README.md)
 The full-blown lab.
 
 This repository contains the scripts used to compile the base system and progressively install software on top of it.
@@ -33,11 +33,14 @@ This is not a universal solution.
 It is a personal ecosystem.
 A controlled, **peaceful anarchy** where experimentation is the rule and the system evolves with you.
 
-## 🌐 Server Edition ! 
+## 🌐 [Server Edition !](server/README.md)
 A minimal Linux host intended to run containers and services.
 
 Same philosophy:
 minimal base system, explicit components, reproducible builds.
+
+
+
 
 # Motivation
 The project started partly as a way to step away from the increasing monetization of software ecosystems and return to something simpler: software that just does its job.

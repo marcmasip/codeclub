@@ -1,6 +1,15 @@
-64/out/*
-64/tmp/*
+library/*
+!library/conf
+desktop/develop
+desktop/mount
+desktop/*.img
+server/mount
+server/etc
+server/*.img
+# We are ignoring distiled projects for now 01-03-2026
+
 pi/out/*
 pi/tmp/*
-library/
-!library/conf
+pi/*
+/nbproject/private/
+old/

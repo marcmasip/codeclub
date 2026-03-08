@@ -1,6 +1,0 @@
-
-# Aqui como .xrcinit para todos los users 
-
-xrandr \
-  --output HDMI-A-0 --primary --below DisplayPort-0 \
-  --output DVI-D-0 --left-of HDMI-A-0 --rotate left

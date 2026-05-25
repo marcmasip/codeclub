@@ -20,7 +20,7 @@ Example function:
 A project is installed by defining functions whose names start with ins_.
 Available macros:
 - at <url>: extracts the project name and version from the URL.
-- oa <args> obtain and all: o && cf <args> && mo && mi . 
+- oa <args> obtain and all... o && cf <args> && mo && mi . 
 - o: downloads the tarball and expands it to /tmp/club/src/<name>.
 - cf <args>: detects autoconf, configure and meson configured by args ***NEW***
 - mo <args>: builds objects (make, others).

@@ -86,7 +86,7 @@ ins_safe_end() {
 }
 
 ins_packages() {
-    # Usa el parámetro $1 o ensambla el nombre con las variables globales
+    
     local pkg_name="${1:-${chapter}-${project}}"
     local pkg_file="${pkg_name}.tar.gz"
     local url="$cdn/${1:-latest}/${pkg_file}"

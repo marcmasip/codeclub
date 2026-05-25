@@ -37,7 +37,15 @@ CONFIRM(){
 }
 
 
-
+show_confirm() {
+	ORANGE='\033[38;5;208m'
+	BOLD='\033[1m'
+	CRS='\033[0m'
+	SAY  "Confirma	${BOLD}$CHAPTER${CRS}/${BOLD}$ITEM${CRS}"  "❔" "Destino:	${BOLD}$ODIR${CRS}"
+	read uok
+	[ "$uok" != "y" ] && echo "Cancelled " && exit 1
+	return 0
+}
 
 #
 # SHOW PROGRESS

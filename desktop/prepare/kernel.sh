@@ -13,8 +13,8 @@ conf) say "Configurar $kn en BDIR ?"
 	if [[ ! -e "$bdir/$kn/.config" ]]; then
 		cp "$ldir/etc/.config-$kn" "$bdir/$kn/.config"
 	fi
-	make -C "$ldir/develop/linux-6.19.6" O="$bdir/$kn" menuconfig
-	make -C "$ldir/develop/linux-6.19.6" O="$bdir/$kn" prepare
+	make -C "$ldir/develop/linux-7.1-rc3" O="$bdir/$kn" menuconfig
+	make -C "$ldir/develop/linux-7.1-rc3" O="$bdir/$kn" prepare
 ;;
 
 save) say "Guardar $kn en BDIR ?"
@@ -29,7 +29,7 @@ make) say "Compilando $kn en BDIR"
 	mkdir -p "$bdir/$kn"
 	cd "$bdir/$kn"
 	#cp "$ldir/conf/.config-$kn" "$bdir/$kn/.config"
-	make -j6 -C "$ldir/develop/linux-6.19.6" O="$bdir/$kn" bzImage
+	make -j6 -C "$ldir/develop/linux-7.1-rc3" O="$bdir/$kn" bzImage
 ;;
 	
 	
@@ -37,11 +37,11 @@ modules) say "Modules $kn en BDIR"
 	mkdir -p "$bdir/$kn"
 	cd "$bdir/$kn"
 	#cp "$ldir/conf/.config-$kn" "$bdir/$kn/.config"
-	make -j6 -C "$ldir/develop/linux-6.19.6" O="$bdir/$kn" modules &&\
+	make -j6 -C "$ldir/develop/linux-7.1-rc3" O="$bdir/$kn" modules &&\
 	mkdir -p "$bdir/$kn" &&\
         DEST="$bdir/$kn/dist" &&\
         mkdir -p "$DEST" &&\
-	make -C "$ldir/develop/linux-6.19.6" O="$bdir/$kn" \
+	make -C "$ldir/develop/linux-7.1-rc3" O="$bdir/$kn" \
              INSTALL_MOD_PATH="$DEST" modules_install
 ;;
 esac

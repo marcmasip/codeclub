@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. params.sh
+. conf.sh
 . $ldir/script/show.sh
 
 case "$1" in
@@ -38,5 +38,7 @@ case "$1" in
 		sudo umount $odir/tmp
 		sudo umount $odir
 	;;
+	
+	*) echo "Use: disk.sh create|export|mount|umount" ;;
 	
 esac

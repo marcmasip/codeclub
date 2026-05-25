@@ -1,23 +1,3 @@
-#!/usr/bin/env bash
-
-. conf.sh
-. $ldir/script/show.sh
-. macro.sh
-
-
-
-
-r="oa --prefix=/usr" 
-cx="cf --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static"
-rx="$r --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static"
-rxs="$r --prefix=/usr --sysconfdir=/etc --localstatedir=/var "
-ru="$r --prefix=/usr"
-rud="$ru --disable-static"
-mu="mes --prefix=/usr"
-mu32="mes32 --prefix=/usr"
-mur="$mu --prefix=/usr"
-
-
 at_x(){
 	at https://www.x.org/pub/individual/lib/$src-$1.tar.xz
 	return $?
@@ -32,7 +12,7 @@ xapp(){
 }
 
 ins_libpng(){
-	at  https://downloads.sourceforge.net/libpng/libpng-1.6.50.tar.xz && $r
+	at  https://downloads.sourceforge.net/libpng/libpng-1.6.50.tar.xz && $r && make clean && r32
 	return $?
 }
 
@@ -43,9 +23,18 @@ ins_freetype(){
 sed -r "s:.*(#.*SUBPIXEL_RENDERING) .*:\1:" \
     -i include/freetype/config/ftoption.h  &&
 
-ca --prefix=/usr --enable-freetype-config --disable-static
+ca --prefix=/usr --enable-freetype-config --disable-static &&\
+	make clean &&
+	cf32 --prefix=/usr --enable-freetype-config --disable-static && mo && mi32
+
 	return $?
 }
+ins_wmctrl(){
+	at https://manned.org/pkg/arch/wmctrl/1.07-6 && $r	
+	return $?
+}
+
+
 ins_fontconfig(){
 	 at https://gitlab.freedesktop.org/api/v4/projects/890/packages/generic/fontconfig/2.17.1/fontconfig-2.17.1.tar.xz &&\
 	 $r --sysconfdir=/etc    \
@@ -257,65 +246,7 @@ ins_xcbutilcursor(){
 }
 
 
-ins_libdrm(){
-	at https://dri.freedesktop.org/libdrm/libdrm-2.4.126.tar.xz && $mu -D udev=true -D valgrind=disabled && $mu32 -D udev=true -D valgrind=disabled
-	return $?
-}
-ins_spirv_headers(){
-	src="SPIRV-Headers-vulkan-sdk"
-	at https://github.com/KhronosGroup/SPIRV-Headers/archive/vulkan-sdk-1.4.321.0/SPIRV-Headers-vulkan-sdk-1.4.321.0.tar.gz &&\
-	cmn -D CMAKE_INSTALL_PREFIX=/usr 
-	return $?
-}
-ins_spirv_tools(){
-	src="SPIRV-Tools-vulkan-sdk"
-	at https://github.com/KhronosGroup/SPIRV-Tools/archive/vulkan-sdk-1.4.321.0/SPIRV-Tools-vulkan-sdk-1.4.321.0.tar.gz && o && wbd && bd &&\
 
-
- cmn -D SPIRV_WERROR=OFF \
-      -D BUILD_SHARED_LIBS=ON \
-      -D SPIRV_TOOLS_BUILD_STATIC=OFF \
-      -D SPIRV-Headers_SOURCE_DIR=/usr 
-     
-	return $?
-}
-ins_glslang(){
-	at https://github.com/KhronosGroup/glslang/archive/16.0.0/glslang-16.0.0.tar.gz && cmn -D CMAKE_INSTALL_PREFIX=/usr     \
-      -D CMAKE_BUILD_TYPE=Release      \
-      -D ALLOW_EXTERNAL_SPIRV_TOOLS=ON \
-      -D BUILD_SHARED_LIBS=ON          \
-      -D GLSLANG_TESTS=OFF 
-     return $?
-}
-ins_mesa(){
-	at https://mesa.freedesktop.org/archive/mesa-25.2.2.tar.xz &&
-	export CURL_CA_BUNDLE=/etc/ssl/certs/bundle.crt &&\
-	$mu \
-      -D platforms=x11 \
-      -D gallium-drivers=r600,softpipe,radeonsi,d3d12,i915 \
-      -D vulkan-drivers=amd,swrast,intel_hasvk  \
-      -D glx=auto \
-      -D video-codecs=all \
-      -D egl-native-platform=x11 \
-      -D egl=enabled \
-      -D libunwind=disabled
-	return $?
-}
-ins_mesa32(){
-	src="mesa"
-	at https://mesa.freedesktop.org/archive/mesa-25.2.2.tar.xz &&
-	export CURL_CA_BUNDLE=/etc/ssl/certs/bundle.crt &&\
-	$mu32 \
-      -D platforms=x11 \
-      -D gallium-drivers=r600,softpipe,radeonsi,d3d12,i915 \
-      -D vulkan-drivers=amd,swrast,intel_hasvk  \
-      -D glx=auto \
-      -D video-codecs=all \
-      -D egl-native-platform=x11 \
-      -D egl=enabled \
-      -D libunwind=disabled
-	return $?
-}
 
 
 ins_mingw_headers() {
@@ -571,16 +502,6 @@ ins_font_xfree86_type1() {
     return $?
 }
 
-ins_libepoxy(){
-	at  https://download.gnome.org/sources/libepoxy/1.5/libepoxy-1.5.10.tar.xz && $mur
-	return $?
-}
-
-ins_pixman(){
-	at  https://www.cairographics.org/releases/pixman-0.46.4.tar.gz && $mur
-	return $?
-}
-
 
 
 ins_xorg_server(){
@@ -595,47 +516,22 @@ ins_xorg_server(){
 }
 
 
-ins_cairo(){
-	at https://www.cairographics.org/releases/cairo-1.18.4.tar.xz && $mur
-	return $?
-}
+
 
 ins_xkeyboard_config(){
 	at  https://www.x.org/pub/individual/data/xkeyboard-config/xkeyboard-config-2.45.tar.xz && $mur
 }
 
-ins_jwm(){
-	at https://github.com/joewing/jwm/releases/download/v2.4.6/jwm-2.4.6.tar.xz && $rx
-	return $?
-}
+
 ins_luit(){
 	at https://invisible-mirror.net/archives/luit/luit-20240910.tgz &&\
 	$rx
 	return $?
 }
 	
-ins_xterm(){
-	ato https://invisible-mirror.net/archives/xterm/xterm-401.tgz &&\
-	sed -i '/v0/{n;s/new:/new:kb=^?:/}' termcap &&\
-	printf '\tkbs=\\177,\n' >> terminfo &&\
-	TERMINFO=/usr/share/terminfo \
-	ca --prefix=/usr --with-app-defaults=/etc/X11/app-defaults &&\
-	mkdir -pv /usr/share/applications &&\
-	cp -v *.desktop /usr/share/applications/
-	return $?
-}
 
-ins_libevdev() {
-    at "https://www.freedesktop.org/software/libevdev/libevdev-1.13.4.tar.xz"
-    # paquete autotools estandar. o+cf+m
-    oa --prefix=/usr --disable-static
-    return $?
-}
 
-ins_mtdev(){
-	at https://bitmath.org/code/mtdev/mtdev-1.1.7.tar.bz2 && $rx
-	return $?
-}
+
 
 # 2. librería de lógica (gestos, aceleración, etc)
 ins_libinput() {
@@ -674,28 +570,19 @@ ins_xf86_video_intel(){
 	
 }
 
+
+# SOUND?
+
 ins_flac(){
 	 at https://github.com/xiph/flac/releases/download/1.5.0/flac-1.5.0.tar.xz && $rx --disable-thorough-tests
 	 return $?
  }
 	 
-ins_flac(){
-	 at https://github.com/xiph/flac/releases/download/1.5.0/flac-1.5.0.tar.xz && $rx --disable-thorough-tests
-	 return $?
- }	 
-
-
-ins_libsndfile(){
-	at https://github.com/libsndfile/libsndfile/releases/download/1.2.2/libsndfile-1.2.2.tar.xz && $rx
-	return $?
-	
-}
 
 ins_libsndfile(){
 	at https://github.com/libsndfile/libsndfile/releases/download/1.2.2/libsndfile-1.2.2.tar.xz && o &&\
 	sed '/typedef enum/,/bool ;/d' -i src/ALAC/alac_{en,de}coder.c &&\
-	ca --prefix=/usr
-	
+	ca --prefix=/usr	
 	return $?
 	
 }
@@ -744,11 +631,11 @@ ins_xdotool() {
   mi PREFIX=/usr
   return $?
 }
-
-ins_harfbuzz() {
-  mes -Dgraphite2=enabled
-  return $?
+ins_tumbler(){
+	at https://archive.xfce.org/src/xfce/tumbler/4.20/tumbler-4.20.1.tar.bz2 && $r
+	return $?
 }
+
 
 ins_shared_mime_info() {
 	 at https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/2.4/shared-mime-info-2.4.tar.gz &&\
@@ -855,10 +742,7 @@ ins_libxkbcommon(){
 	 return $?
 	 
  }
-ins_geany() {
-  oa
-  return $?
-}
+
 ins_xfconf(){
 	at  https://archive.xfce.org/src/xfce/xfconf/4.20/xfconf-4.20.0.tar.bz2 && $rx
 	
@@ -881,10 +765,11 @@ ins_libxfce4ui(){
 
 ins_harfbuzz(){
 	at  https://github.com/harfbuzz/harfbuzz/releases/download/12.1.0/harfbuzz-12.1.0.tar.xz &&\
-	$mur 
+	$mur && $mu32
 	return $?
 	
 }
+
 
 
 ins_exo(){
@@ -899,30 +784,22 @@ ins_Linux_PAM(){
 }
 	
 
-ins_pulseaudio(){
-	at https://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-17.0.tar.xz &&
-	$mur  -D database=gdbm    \
-            -D doxygen=false    \
-            -D bluez5=disabled  \
-            -D tests=false     
-    return $?
-}
+
 
 ins_hicolor_icon_theme(){
 	 at https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.17.tar.xz && o && cf --prefix=/usr && mi && di
 	 return $?
 }
-ins_thunar(){
-	at https://archive.xfce.org/src/xfce/thunar/4.16/thunar-4.16.11.tar.bz2 && $rx --sysconfdir=/etc
-	return $?
-	
-}
+
 
 ins_libva(){
-	at https://github.com/intel/libva/releases/download/2.15.0/libva-2.15.0.tar.bz2 && $rx
+	at https://github.com/intel/libva/releases/download/2.23.0/libva-2.23.0.tar.bz2 && $rx
 	return $?
 }	
-
+ins_libva_utils(){
+	at https://github.com/intel/libva-utils/releases/download/2.23.0/libva-utils-2.23.0.tar.bz2 && $rx
+	return $?
+}
 
 ins_libxkbfile() {
     at https://www.x.org/pub/individual/lib/libxkbfile-1.1.3.tar.gz && \
@@ -933,7 +810,7 @@ ins_libxkbfile() {
 
 ins_librsvg(){
 	at https://download.gnome.org/sources/librsvg/2.61/librsvg-2.61.3.tar.xz &&\
-	PATH=$PATH:/opt/rustc-1.91.0/bin/ $mur --buildtype=release 
+	PATH=$PATH:/opt/rustc-1.91.0/bin/ $mur -Dpixbuf-loader=enabled --buildtype=release 
 	 return $?
 }
 
@@ -943,4 +820,114 @@ ins_libev(){
 }
 
 
+ins_libaom(){
+	at  https://storage.googleapis.com/aom-releases/libaom-3.13.3.tar.gz &&\
+	cmn -D CMAKE_INSTALL_PREFIX=/usr \
+      -D CMAKE_BUILD_TYPE=Release -D BUILD_SHARED_LIBS=1       \
+      -D ENABLE_DOCS=no
+    return $?
+}
+ins_libass(){
+	at  https://github.com/libass/libass/releases/download/0.17.4/libass-0.17.4.tar.xz && $r
+	return $?
+}
+ins_fdk_aac(){
+	at https://downloads.sourceforge.net/opencore-amr/fdk-aac-2.0.3.tar.gz && $r
+	return $?
+}
+ins_lame(){
+	at https://downloads.sourceforge.net/lame/lame-3.100.tar.gz && $r --enable-mp3rtp --disable-static 
+	return $?
+}
+ins_libvorbis(){
+	at https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.xz && $r
+	return $?
+}
+ins_libogg(){
+	at https://downloads.xiph.org/releases/ogg/libogg-1.3.6.tar.xz && $r
+	return $?
+}
+ins_libvpx(){
+	 at https://github.com/webmproject/libvpx/archive/refs/tags/v1.16.0.tar.gz 1.16.0 tar.gz  && o && wbd && ca --prefix=/usr    \
+             --enable-shared  \
+             --disable-static \
+             --as=yasm
+	 return $?
+ }
+ins_x264(){
+	at  https://anduin.linuxfromscratch.org/BLFS/x264/x264-20250815.tar.xz && $r --enable-shared \
+            --disable-cli  
+	return $?
+}
+ins_opus(){
+	at http://downloads.xiph.org/releases/opus/opus-1.1.tar.gz && $r
+	return $?
+	
+}
+
+ins_x265(){
+	at https://bitbucket.org/multicoreware/x265_git/downloads/x265_4.2.tar.gz 4.2 tar.gz x265_4.2  &&\
+            o && wbd && bd &&
+cmake -D CMAKE_INSTALL_PREFIX=/usr \
+      -D GIT_ARCHETYPE=1           \
+      -W no-dev $sdir/$at_name/source
+make &&\
+make install &&\
+rm -vf /usr/lib/libx265.a 
+	return $?
+}
+ins_SDL2(){
+	at https://www.libsdl.org/release/SDL2-2.0.14.tar.gz && $r
+	return $?
+}
+ins_dav1d(){
+	at https://code.videolan.org/videolan/dav1d/-/archive/1.5.3/dav1d-1.5.3.tar.gz && $mur
+	return $?
+}
+ins_ffmpeg(){
+	at https://ffmpeg.org/releases/ffmpeg-8.1.tar.xz &&\
+	$r --disable-static \
+    --enable-shared \
+    --enable-gpl \
+    --enable-version3 \
+    --enable-nonfree \
+    --disable-debug \
+    --enable-libaom \
+    --enable-libass \
+    --enable-libfdk-aac \
+    --enable-libfreetype \
+    --enable-libmp3lame \
+    --enable-libopus \
+    --enable-libvorbis \
+    --enable-libvpx \
+    --enable-libx264 \
+    --enable-libx265 \
+    --enable-openssl \
+    --enable-ffmpeg \
+    --ignore-tests=enhanced-flv-av1 \
+    --enable-vaapi \
+    --enable-vdpau \
+    --enable-libdrm \
+    --enable-libdav1d
+    return $?
+}
+ins_gsettings_desktop_schemas(){
+	at https://download.gnome.org/sources/gsettings-desktop-schemas/50/gsettings-desktop-schemas-50.1.tar.xz &&\
+	o && bd && sed -i -r 's:"(/system):"/org/gnome\1:g' schemas/*.in &&
+
+mkdir build &&
+cd    build &&
+
+meson setup --prefix=/usr --buildtype=release .. &&
+ninja && ninja install
+
+	return $?
+}
+ins_imlib2(){
+	at https://downloads.sourceforge.net/enlightenment/imlib2-1.12.6.tar.xz && $r
+	
+	
+	return $?
+}
+	
 run_item

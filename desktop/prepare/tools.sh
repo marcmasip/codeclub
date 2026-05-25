@@ -1,56 +1,45 @@
-# Herramientas temporales
-
-#mia="DESTDIR=$odir"
-
-. $cdir/util/combo.sh
+#!/usr/bin/env bash
+# Welcome to codeclub
+. conf.sh
+. $ldir/script/show.sh
+. $cdir/desktop/install/macro.sh
 
 PATH=$odir/tools/bin:$PATH
 
 mia="DESTDIR=$odir"
 
-#tools
 rt="oa --prefix=$odir/tools "
 
 #regular
 r="oa --prefix=/usr "
-tbu=x86_64-pc-linux-gnu
+tbu=x86_64-club-linux-gnu
 rhb="oa --prefix=/usr --host=$otar --build=$tbu"
 rchb="ca --prefix=/usr --host=$otar --build=$tbu"
 
-# Item plans
-
-kernel(){
-	say "Haciendo kernel $1"
-	mkdir $bdir/linux64 ; cd $bdir/linux64 &&\
-	cp $ldir/conf/.config-$1 $bdir/linux64 &&\
-	make C=$ldir/linux-club O=$bdir/linux64 ARCH=x86_64 bzImage &&\
-	cp arch/x86/boot/bzImage $odir/kernel-$1	
-}
-
-
 ins_kconfig(){
 	mkdir $bdir/linux64 ; cd $bdir/linux64 &&\
-	cp $ldir/conf/.config-linux-club $bdir/linux64 && \
-	make -C $ldir/linux-club O=$bdir/linux64 menuconfig
+	cp $ldir/etc/.config-linux-club-desktop $bdir/linux64 && \
+	make -C $ldir/linux O=$bdir/linux64 menuconfig
 }
 
 ins_kheaders(){
 	mkdir $bdir/linux64 ; cd $bdir/linux64 &&\
-	make C=$ldir/linux-club O=$bdir/linux64 ARCH=x86_64 headers &&\
+	make C=$ldir/linux O=$bdir/linux64 ARCH=x86_64 headers &&\
 	find $bdir/linux64/usr/include -type f ! -name '*.h' -delete &&\
+	mkdir -pv $odir/usr/include &&\
 	cp -rv $bdir/linux64/usr/include/* $odir/usr/include  
 }
+
 ins_tools(){
-		
-	cd $odir
-	mkdir -p tools/{lib,bin}
-	cd $odir/tools
+	cd $odir &&\
+	mkdir -pv tools/{lib,bin} 
+	cd $odir/tools &&\
 	ln -s lib lib64
-	
+	return $?
 }
+
 ins_binutils(){
-  
-  at gnu 2.44 &&\
+  at_gnu 2.44 &&\
   mia="" $rt --disable-nls       \
 	--with-sysroot=$odir \
 	--target=$otar \
@@ -68,15 +57,6 @@ at_gcc(){
 	mv -v $sdir/{mpfr,gmp,mpc} $sdir/gcc  && cd $sdir/gcc
 
 	return $?	
-}
-
-ins_all(){
-	
-	cast binutils gcc1 kconfig kheaders glibc
-	
-	
-	cast_now
-	
 }
 
 ins_gcc1(){
@@ -374,3 +354,4 @@ ins_gcc2(){
 	return $?
 }
 
+run_item

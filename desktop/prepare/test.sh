@@ -58,6 +58,28 @@ NET_TYPE="${2:-user}"
             -blockdev driver=host_device,filename=/dev/sdc,node-name=usbdat,cache.direct=on,cache.no-flush=off \
             -device virtio-blk-pci,drive=usbdat,bootindex=1
     ;;
+    
+      disk)
+                # Por defecto usamos 'user', pero si $2 es 'bridge', cambiamos la config
+NET_TYPE="${2:-user}"
+    
+    if [ "$NET_TYPE" = "bridge" ]; then
+        # IMPORTANTE: Usamos virtio-net-pci y forzamos el nombre de la interfaz
+        NET_OPTS="-netdev tap,id=net0,ifname=tap0,script=no,downscript=no -device virtio-net-pci,netdev=net0,mac=52:54:00:12:34:56"
+        SUDO="sudo"
+    else
+        NET_OPTS="-nic user,model=virtio-net-pci"
+        SUDO=""
+    fi
+
+    $SUDO qemu-system-x86_64 \
+      -m 2048 \
+      -kernel "$kimg" \
+     -append "root=/dev/vda rootwait rw debug=true ipv6.disable=1 net.ifnames=0" \
+     -blockdev driver=raw,node-name=sys,file.driver=host_device,file.filename=/dev/sda1 \
+      -device virtio-blk-pci,drive=sys,bootindex=1 \
+      $NET_OPTS
+    ;;
 
     *)
         echo "Uso: $0 {image [user|bridge]|setup_bridge|usb}"

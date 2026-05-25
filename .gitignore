@@ -1,6 +1,7 @@
 library/*
 !library/conf
 desktop/develop
+clock/
 desktop/mount
 desktop/*.img
 server/mount

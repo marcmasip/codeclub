@@ -18,6 +18,9 @@ The framework is intentionally simple:
 2. build it
 3. install it into the system
 
+***📰 News*** :  3rd iteration uses more verasatile install scripts capable of isolating the build and install process to review, tune and package results.
+See [the cutest package manager](https://github.com/marcmasip/codeclub/blob/main/desktop/install.sh).
+
 Projects live directly inside the system and evolve with it.
 When a new idea appears the workflow is straightforward:
 - unpack the source
@@ -32,6 +35,7 @@ If a modification proves valuable, patches can be generated from the source tree
 This is not a universal solution.
 It is a personal ecosystem.
 A controlled, **peaceful anarchy** where experimentation is the rule and the system evolves with you.
+
 
 ## 🌐 [Server Edition !](server/README.md)
 A minimal Linux host intended to run containers and services.

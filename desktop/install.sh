@@ -17,7 +17,7 @@ ins_once() {
     local insdir=$odir/var/club/installed
     mkdir -p "$insdir"
     [ -f "$insdir/$chapter-$project.log" ] && return 1
-    say "Installing $1 ..."
+    say "Installing $project ..."
     ins_$project && echo "$at_ver" > "$insdir/$chapter-$project.log"
 }
 ins_safe() {
